@@ -49,7 +49,7 @@ class StaticBlog extends React.Component {
     render() {
         const { blog: { blogImage, userProfile, blogId, body, likeCount, userHandle, commentCount, comments } } = this.props
         return (
-            <View>
+            <View style={styles.container}>
                 <Image
                     source={{ uri: blogImage[0] }}
                     width={Dimensions.get('window').width}
@@ -97,7 +97,10 @@ const mapStateToProps = (state) => ({
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: 'white',
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25
     },
     header: {
         flexDirection: 'row',
@@ -109,9 +112,9 @@ const styles = StyleSheet.create({
     blogDetail: {
         paddingHorizontal: 15,
         paddingVertical: 15,
+        paddingBottom: 20,
         flexDirection: 'column',
-        borderBottomWidth: 0.5,
-        borderBottomColor: 'gray'
+
     },
 })
 

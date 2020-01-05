@@ -37,7 +37,7 @@ export class AnotherUserPosts extends Component {
     render() {
         const { blog: { blogImage, userProfile, blogId, body, likeCount, userHandle, commentCount, comments } } = this.props
         return (
-            <View>
+            <View style={styles.container}>
                 <AutoHeightImage
                     source={{ uri: blogImage[0] }}
                     width={Dimensions.get('window').width}
@@ -47,7 +47,7 @@ export class AnotherUserPosts extends Component {
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                             <Image
                                 source={{ uri: userProfile }}
-                                style={{width:50,height:50,borderRadius:75}}
+                                style={{ width: 50, height: 50, borderRadius: 75 }}
                             />
                             <TouchableOpacity style={{ flexDirection: 'column', marginLeft: 15 }} onPress={() => this.props.navigation.navigate('UserDetail')}>
                                 <Text style={{ fontSize: 18, fontWeight: '400' }}>{userHandle}</Text>
@@ -61,7 +61,7 @@ export class AnotherUserPosts extends Component {
                         {this._Body()}
                     </View>
                     <TouchableOpacity style={{ marginTop: 10, flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('CommentModel', { comments: comments, blogId: blogId })}>
-                        <Text style={{ fontSize: 14, fontWeight: 'normal', color: 'gray' }}>Show all comments</Text>
+                        <Text style={{ fontSize: 14, fontWeight: 'normal', color: 'gray' }}>Show all {commentCount} comments</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -84,7 +84,10 @@ const mapStateToProps = (state) => ({
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: 'white',
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25
     },
     header: {
         flexDirection: 'row',
@@ -96,16 +99,14 @@ const styles = StyleSheet.create({
     blogDetail: {
         paddingHorizontal: 15,
         paddingVertical: 15,
+        paddingBottom: 20,
         flexDirection: 'column',
-        borderBottomWidth: 0.5,
-        borderBottomColor: 'gray'
     },
     comments: {
         paddingHorizontal: 15,
         paddingVertical: 15,
+        paddingBottom: 20,
         flexDirection: 'column',
-        borderBottomWidth: 0.5,
-        borderBottomColor: 'gray'
     },
 })
 

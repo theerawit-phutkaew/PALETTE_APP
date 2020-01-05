@@ -44,7 +44,7 @@ export class Posts extends Component {
         const { UI: { loading } } = this.props
 
         const blogmarkup = loading ? (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
                 <ActivityIndicator />
             </View>
         ) : authUserBlog === undefined ? (
@@ -52,9 +52,9 @@ export class Posts extends Component {
         ) : (
                     <ScrollView style={styles.scrollView}>
                         <StaticPosts authUserBlog={authUserBlog} />
-                        <View style={{ marginTop: 10 }}>
-                            <StaticUserMorePosts authUserBlog={authUserBlog} />
-                        </View>
+                        {
+                            authUserBlogs === 1 ? null : (<StaticUserMorePosts authUserBlog={authUserBlog} />)
+                        }
                     </ScrollView>
                 )
 
@@ -70,10 +70,10 @@ export class Posts extends Component {
                 {
                     loading ? null : (
                         <View style={styles.button}>
-                                <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.icon}>
-                                    <Ionicons name='md-arrow-back' size={24} color='white' />
-                                </TouchableOpacity>
-                                <View style={styles.text}>
+                            <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.icon}>
+                                <Ionicons name='md-arrow-back' size={24} color='white' />
+                            </TouchableOpacity>
+                            <View style={styles.text}>
                                 {OptionsMarkup}
                             </View>
                         </View>
@@ -91,6 +91,7 @@ export class Posts extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: 'black'
     },
     button: {
         marginTop: Constants.statusBarHeight,
@@ -119,7 +120,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     scrollView: {
-        marginTop: Constants.statusBarHeight
+        marginTop: Constants.statusBarHeight,
+        backgroundColor: '#E13C3F'
     },
 })
 

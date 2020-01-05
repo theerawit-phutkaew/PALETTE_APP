@@ -36,15 +36,13 @@ export class BlogDetail extends React.Component {
         const { blog } = this.props.data
         const { UI: { loading } } = this.props
         const blogmarkup = loading ? (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' ,backgroundColor:'white'}}>
                 <ActivityIndicator />
             </View>
         ) : blog === null ? (<Text>...noblog</Text>) : blogImage === undefined ? (<Text>img undefined</Text>) : (
             <ScrollView style={styles.scrollView}>
                 <StaticBlog blog={blog} />
-                <View style={styles.morePosts}>
-                    <StaticMoreBlogs blog={blog} />
-                </View>
+                <StaticMoreBlogs blog={blog} />
             </ScrollView>
         )
         return (
@@ -64,10 +62,12 @@ export class BlogDetail extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor:'black'
 
     },
     scrollView: {
-        marginTop: Constants.statusBarHeight
+        marginTop: Constants.statusBarHeight,
+        backgroundColor: '#E13C3F'
     },
     moreLikeThis: {
         paddingHorizontal: 15,

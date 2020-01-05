@@ -30,7 +30,7 @@ export class AuthLoadingScreen extends Component {
         const userToken = await AsyncStorage.getItem('FBIdToken')
         if (userToken) {
             const decodedToken = jwtDecode(userToken);
-            if (decodedToken.exp * 1000 < Date.now()) {
+            if (decodedToken.exp * 1000000 < Date.now()) {
                 store.dispatch({ type: SET_UNAUTHENTICATED});
                 store.dispatch(logoutUser());
             } else {

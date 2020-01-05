@@ -55,7 +55,9 @@ export class StaticMoreBlogs extends Component {
         const { blogs } = this.props.data
         return (
             <View style={styles.container}>
-                <Text style={{ fontWeight: '300', fontSize: 18, marginLeft: 10 }} >More Like This</Text>
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontWeight: '400', fontSize: 18, marginTop: 10 }} >More Like This</Text>
+                </View>
                 <View style={{ marginTop: 10 }}>
                     <MasonryList
                         style={{ marginHorizontal: 5 }}
@@ -74,6 +76,9 @@ export class StaticMoreBlogs extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        backgroundColor: 'white'
         //marginTop: Constants.statusBarHeight
     },
 })

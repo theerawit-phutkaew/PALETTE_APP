@@ -51,9 +51,9 @@ export class UserPosts extends Component {
         ) : blog === undefined ? (<Text>...noblog</Text>) : (
             <ScrollView style={styles.scrollView}>
                 <AnotherUserPosts blog={blog} />
-                <View style={{ marginTop: 10 }}>
-                    <AnotherUserMorePosts blog={blog} userblogs={userblogs} />
-                </View>
+                {
+                    userblogs.length === 1 ? null : (<AnotherUserMorePosts blog={blog} userblogs={userblogs} />)
+                }
             </ScrollView>
         )
         return (
@@ -83,6 +83,7 @@ export class UserPosts extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#E13C3F'
     },
     icon: {
         width: 50,

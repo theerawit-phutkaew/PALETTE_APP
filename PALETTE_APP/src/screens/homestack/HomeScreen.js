@@ -34,7 +34,15 @@ import StaticBlogs from '../../components/blog/StaticBlogs'
 class HomeScreen extends React.Component {
 
     componentDidMount() {
-        this.props.getBlogs()
+        this.mounted = true
+
+        if(this.mounted){
+            this.props.getBlogs()
+        }
+    }
+
+    componentWillUnmount(){
+        this.mounted = false
     }
 
     render() {

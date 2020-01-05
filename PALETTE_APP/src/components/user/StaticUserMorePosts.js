@@ -55,6 +55,9 @@ export class StaticUserMorePosts extends Component {
         const { authUserBlogs } = this.props.user
         return (
             <View style={styles.container}>
+                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontWeight: '400', fontSize: 18, marginTop: 10 }} >More Posts</Text>
+                </View>
                 <MasonryList
                     style={{ marginHorizontal: 5 }}
                     data={authUserBlogs}
@@ -71,6 +74,9 @@ export class StaticUserMorePosts extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        backgroundColor: 'white'
         //marginTop: Constants.statusBarHeight
     },
 })

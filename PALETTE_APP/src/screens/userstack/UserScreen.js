@@ -25,43 +25,41 @@ class UserScreen extends Component {
         const { loading, authenticated, credentials, authUserBlogs } = this.props.user
         const userBlogsMarkup = loading ? (
             <Text>loading...</Text>
-        ) : authUserBlogs[0] === undefined ? (
+        ) : !authenticated ? null : authUserBlogs[0] === undefined ? (
             <View style={styles.container}>
                 <View style={styles.noUserBlogs}>
-                    <Text style={{ fontSize: 18, fontWeight: '300',color:'gray' }}>You have no Blog</Text>
+                    <Text style={{ fontSize: 18, fontWeight: '300', color: 'gray' }}>You have no Blog</Text>
                 </View>
             </View>
         ) : (
-                    <StaticUserBlogs userblogs={authUserBlogs} navigate={this.props.navigation.navigate} destination='Posts' />
-                )
+                <StaticUserBlogs userblogs={authUserBlogs} navigate={this.props.navigation.navigate} destination='Posts' />
+            )
         return (
             <View style={styles.container}>
-                <View>
-                    {
-                        !this.props.user.loading ? (authenticated ? (
-                            <View style={{ flexDirection: 'column' }}>
-                                <View style={styles.header}>
-                                    <Text style={{ fontSize: 18, fontWeight: '300' }}>{credentials.handle}</Text>
-                                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SettingModal')}>
-                                        <Ionicons name={'ios-settings'} size={25} />
-                                    </TouchableOpacity>
-                                </View>
-                                <StaticProfile profile={credentials} />
+                {
+                    !this.props.user.loading ? (authenticated ? (
+                        <View style={{ flexDirection: 'column' }}>
+                            <View style={styles.header}>
+                                <Text style={{ fontSize: 18, fontWeight: '300' }}>{credentials.handle}</Text>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('SettingModal')}>
+                                    <Ionicons name={'ios-settings'} size={25} />
+                                </TouchableOpacity>
                             </View>
-                        ) : (
-                        <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-                            <Button 
-                             title='LOGIN'
-                             type='solid'
-                             titleStyle={{ color: 'white' }}
-                             buttonStyle={{ backgroundColor: '#E13C3F', width: 250 }}
-                             onPress={() => this.props.navigation.navigate('Login')}
-
-                            />
+                            <StaticProfile profile={credentials} />
                         </View>
+                    ) : (
+                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                <Button
+                                    title='LOGIN'
+                                    type='solid'
+                                    titleStyle={{ color: 'white' }}
+                                    buttonStyle={{ backgroundColor: '#E13C3F', width: 250 }}
+                                    onPress={() => this.props.navigation.navigate('Login')}
+
+                                />
+                            </View>
                         )) : (<Text>...loading</Text>)
-                    }
-                </View>
+                }
                 {userBlogsMarkup}
             </View>
         )
@@ -79,10 +77,10 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         marginTop: Constants.statusBarHeight,
     },
-    noUserBlogs:{
-        flex:1,
-        marginTop:20,
-        alignItems:'center'
+    noUserBlogs: {
+        flex: 1,
+        marginTop: 20,
+        alignItems: 'center'
     }
 })
 

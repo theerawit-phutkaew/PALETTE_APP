@@ -37,6 +37,7 @@ class StaticUserBlogs extends React.Component {
         const { userblogs } = this.props
         return (
             <View style={styles.container}>
+               
                 <MasonryList
                     style={{ marginHorizontal: 5 }}
                     data={userblogs}
