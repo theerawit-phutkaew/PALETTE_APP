@@ -34,6 +34,7 @@ export class StaticPosts extends Component {
         }
     };
 
+
     render() {
         const { authUserBlog: { blogImage, userProfile, blogId, body, likeCount, userHandle, commentCount, comments } } = this.props
         return (

@@ -87,28 +87,32 @@ export class ProfileUpload extends Component {
                 aspect: [3, 3],
             });
 
-            let resizedUri = await new Promise((resolve, reject) => {
-                ImageEditor.cropImage(pickerResult.uri,
-                    {
-                        offset: { x: 0, y: 0 },
-                        size: { width: pickerResult.width, height: pickerResult.height },
-                        displaySize: { width: pickerResult.width / 5, height: pickerResult.height / 5 },
+            if (!pickerResult.cancelled) {
+                this.setState({ pickerResult: pickerResult })
 
-                    },
-                    (uri) => resolve(uri),
-                    () => reject(),
-                );
-            })
+                let resizedUri = await new Promise((resolve, reject) => {
+                    ImageEditor.cropImage(pickerResult.uri,
+                        {
+                            offset: { x: 0, y: 0 },
+                            size: { width: pickerResult.width, height: pickerResult.height },
+                            displaySize: { width: pickerResult.width / 5, height: pickerResult.height / 5 },
 
-            this.setState({ profileUrl: resizedUri, pickerResult: pickerResult })
+                        },
+                        (uri) => resolve(uri),
+                        () => reject(),
+                    );
+                })
 
-            this.setState(
-                (prevState) => ({
-                    pickerResult: Object.assign({}, prevState.pickerResult, {
-                        uri: resizedUri
-                    })
-                }))
+                this.setState({ profileUrl: resizedUri, pickerResult: pickerResult })
 
+                this.setState(
+                    (prevState) => ({
+                        pickerResult: Object.assign({}, prevState.pickerResult, {
+                            uri: resizedUri
+                        })
+                    }))
+
+            }
         }
         const pickerResult = this.state.pickerResult
         this._handleImagePicked(pickerResult);

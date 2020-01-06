@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
 CommentForm.propTypes = {
     submitComment: PropTypes.func.isRequired,
     UI: PropTypes.object.isRequired,
-    blogId: PropTypes.string.isRequired,
+  //  blogId: PropTypes.string.isRequired,
     user: PropTypes.object.isRequired,
 }
 

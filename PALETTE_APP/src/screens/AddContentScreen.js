@@ -109,7 +109,7 @@ class AddContentScreen extends React.Component {
             {
               offset: { x: 0, y: 0 },
               size: { width: pickerResult.width, height: pickerResult.height },
-              displaySize: { width: pickerResult.width / 5, height: pickerResult.height / 5 },
+              displaySize: { width: pickerResult.width , height: pickerResult.height  },
 
             },
             (uri) => resolve(uri),

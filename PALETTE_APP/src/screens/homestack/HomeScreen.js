@@ -36,12 +36,12 @@ class HomeScreen extends React.Component {
     componentDidMount() {
         this.mounted = true
 
-        if(this.mounted){
+        if (this.mounted) {
             this.props.getBlogs()
         }
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         this.mounted = false
     }
 
@@ -53,11 +53,15 @@ class HomeScreen extends React.Component {
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <ActivityIndicator />
             </View>
+        ) : blogs.length === 0 ? (
+            <View style={styles.container}>
+                <Text>NO BLOG</Text>
+            </View>
         ) : (
-                <View style={styles.container}>
-                    <StaticBlogs blogs={blogs} />
-                </View>
-            )
+                    <View style={styles.container}>
+                        <StaticBlogs blogs={blogs} />
+                    </View>
+                )
         return blogsMarkup
     }
 }

@@ -106,22 +106,23 @@ class SignUpScreen extends Component {
 
 
                     <View style={styles.buttonContainer}>
+
+                        <View style={{ width: 170 }}>
+                            <Button title='เข้าสู่ระบบ' type='outline' titleStyle={{ color: '#E13C3F' }} buttonStyle={{ borderColor: '#E13C3F' }}
+                                onPress={() => this.props.navigation.navigate('Login')}
+                            />
+                        </View>
                         <View style={{ width: 170 }}>
                             <Button
                                 title='สมัครสมาชิค'
                                 type='outline'
-                                titleStyle={{ color: '#EBEBEB' }}
-                                buttonStyle={{ borderColor: '#EBEBEB' }}
+                                titleStyle={{ color: 'white' }}
+                                buttonStyle={{ backgroundColor: '#E13C3F', }}
                                 onPress={this.handleSubmit}
                                 disabled={loading}
                             >
                                 {loading && (<ActivityIndicator />)}
                             </Button>
-                        </View>
-                        <View style={{ width: 170 }}>
-                            <Button title='เข้าสู่ระบบ' type='outline' titleStyle={{ color: '#EBEBEB' }} buttonStyle={{ borderColor: '#EBEBEB' }}
-                                onPress={() => this.props.navigation.navigate('Login')}
-                            />
                         </View>
                     </View>
                 </View>

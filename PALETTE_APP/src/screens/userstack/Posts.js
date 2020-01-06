@@ -53,7 +53,7 @@ export class Posts extends Component {
                     <ScrollView style={styles.scrollView}>
                         <StaticPosts authUserBlog={authUserBlog} />
                         {
-                            authUserBlogs === 1 ? null : (<StaticUserMorePosts authUserBlog={authUserBlog} />)
+                            authUserBlogs.length === 1 ? null : (<StaticUserMorePosts authUserBlog={authUserBlog} />)
                         }
                     </ScrollView>
                 )
