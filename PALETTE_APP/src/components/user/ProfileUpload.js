@@ -4,6 +4,7 @@ import { Input } from 'react-native-elements'
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
+import * as ImageManipulator from 'expo-image-manipulator'
 
 //import ImagePicker from 'react-native-image-picker';
 
@@ -89,34 +90,37 @@ export class ProfileUpload extends Component {
 
             if (!pickerResult.cancelled) {
                 this.setState({ pickerResult: pickerResult })
+                
+                const manipResult = await ImageManipulator.manipulateAsync(
+                    pickerResult.uri,
+                    [{ resize: { width: 300 } }],
+                    { compress: 1, format: ImageManipulator.SaveFormat.PNG }
+                );
 
-                let resizedUri = await new Promise((resolve, reject) => {
-                    ImageEditor.cropImage(pickerResult.uri,
-                        {
-                            offset: { x: 0, y: 0 },
-                            size: { width: pickerResult.width, height: pickerResult.height },
-                            displaySize: { width: pickerResult.width / 5, height: pickerResult.height / 5 },
-
-                        },
-                        (uri) => resolve(uri),
-                        () => reject(),
-                    );
-                })
-
-                this.setState({ profileUrl: resizedUri, pickerResult: pickerResult })
+                this.setState({ profileUrl: manipResult.uri, pickerResult: pickerResult })
 
                 this.setState(
                     (prevState) => ({
                         pickerResult: Object.assign({}, prevState.pickerResult, {
-                            uri: resizedUri
+                            uri: manipResult.uri
                         })
                     }))
 
+                this._result()
+                
+            } else {
+                console.log('cancelled');
+                //  this.props.navigation.goBack()
             }
         }
+    };
+
+
+    _result = () => {
         const pickerResult = this.state.pickerResult
         this._handleImagePicked(pickerResult);
-    };
+    }
+
 
 
 

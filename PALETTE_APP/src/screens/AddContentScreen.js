@@ -30,6 +30,7 @@ import * as Permissions from 'expo-permissions';
 import { getBlogs } from '../actions/dataActions'
 import { getUserData } from '../actions/userActions'
 
+import * as ImageManipulator from 'expo-image-manipulator'
 
 
 import AutoHeightImage from 'react-native-auto-height-image';
@@ -104,26 +105,19 @@ class AddContentScreen extends React.Component {
       if (!pickerResult.cancelled) {
         this.setState({ pickerResult: pickerResult })
 
-        let resizedUri = await new Promise((resolve, reject) => {
-          ImageEditor.cropImage(pickerResult.uri,
-            {
-              offset: { x: 0, y: 0 },
-              size: { width: pickerResult.width, height: pickerResult.height },
-              displaySize: { width: pickerResult.width , height: pickerResult.height  },
+        const manipResult = await ImageManipulator.manipulateAsync(
+          pickerResult.uri,
+          [{ resize: { width: 500 } }],
+          { compress: 1, format: ImageManipulator.SaveFormat.PNG }
+      );
 
-            },
-            (uri) => resolve(uri),
-            () => reject(),
-          );
-        })
+      this.setState({ image: manipResult.uri, pickerResult: pickerResult })
 
-        this.setState({ image: resizedUri, pickerResult: pickerResult })
-
-        this.setState(
+      this.setState(
           (prevState) => ({
-            pickerResult: Object.assign({}, prevState.pickerResult, {
-              uri: resizedUri
-            })
+              pickerResult: Object.assign({}, prevState.pickerResult, {
+                  uri: manipResult.uri
+              })
           }))
 
       } else {

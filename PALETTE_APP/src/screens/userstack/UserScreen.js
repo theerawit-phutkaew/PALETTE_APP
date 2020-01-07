@@ -5,6 +5,7 @@ import {
     View,
     Dimensions,
     TouchableOpacity,
+    ActivityIndicator
 
 } from 'react-native'
 import { Button } from 'react-native-elements';
@@ -23,9 +24,7 @@ class UserScreen extends Component {
 
     render() {
         const { loading, authenticated, credentials, authUserBlogs } = this.props.user
-        const userBlogsMarkup = loading ? (
-            <Text>loading...</Text>
-        ) : !authenticated ? null : authUserBlogs[0] === undefined ? (
+        const userBlogsMarkup = loading ? null : !authenticated ? null : authUserBlogs[0] === undefined ? (
             <View style={styles.container}>
                 <View style={styles.noUserBlogs}>
                     <Text style={{ fontSize: 18, fontWeight: '300', color: 'gray' }}>You have no Blog</Text>
@@ -58,7 +57,11 @@ class UserScreen extends Component {
 
                                 />
                             </View>
-                        )) : (<Text>...loading</Text>)
+                        )) : (
+                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
+                                <ActivityIndicator />
+                            </View>
+                        )
                 }
                 {userBlogsMarkup}
             </View>
