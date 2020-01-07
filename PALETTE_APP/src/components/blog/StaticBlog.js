@@ -5,11 +5,12 @@ import {
     View,
     TouchableOpacity,
     Dimensions,
-    TouchableHighlight
+    TouchableHighlight,
+    Image
 
 } from 'react-native'
 
-import Image from 'react-native-scalable-image'
+import AutoHeightImage from 'react-native-auto-height-image';
 import PropTypes from 'prop-types';
 import LikeButton from '../blog/LikeButton'
 
@@ -50,17 +51,16 @@ class StaticBlog extends React.Component {
         const { blog: { blogImage, userProfile, blogId, body, likeCount, userHandle, commentCount, comments } } = this.props
         return (
             <View style={styles.container}>
-                <Image
+                <AutoHeightImage
                     source={{ uri: blogImage[0] }}
                     width={Dimensions.get('window').width}
                 />
                 <View style={styles.blogDetail}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Image
+                             <Image
                                 source={{ uri: userProfile }}
-                                width={50}
-                                borderRadius={75}
+                                style={{ width: 50, height: 50, borderRadius: 75 }}
                             />
                             <TouchableOpacity style={{ flexDirection: 'column', marginLeft: 15 }} onPress={this.handleNavigate}>
                                 <Text style={{ fontSize: 18, fontWeight: '400' }}>{userHandle}</Text>
@@ -100,7 +100,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         borderBottomLeftRadius: 25,
-        borderBottomRightRadius: 25
+        borderBottomRightRadius: 25,
+        borderBottomColor:'#E13C3F',
+        borderBottomWidth:0.5
     },
     header: {
         flexDirection: 'row',

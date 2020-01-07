@@ -45,7 +45,7 @@ export class UserPosts extends Component {
         const { UI: { loading } } = this.props
 
         const blogmarkup = loading ? (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:'white' }}>
                 <ActivityIndicator />
             </View>
         ) : blog === undefined ? (<Text>...noblog</Text>) : (

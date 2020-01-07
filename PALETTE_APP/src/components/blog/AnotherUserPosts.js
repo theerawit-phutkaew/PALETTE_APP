@@ -87,7 +87,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         borderBottomLeftRadius: 25,
-        borderBottomRightRadius: 25
+        borderBottomRightRadius: 25,
+        borderBottomColor:'#E13C3F',
+        borderBottomWidth:0.5
     },
     header: {
         flexDirection: 'row',

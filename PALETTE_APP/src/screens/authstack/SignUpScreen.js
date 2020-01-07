@@ -115,7 +115,7 @@ class SignUpScreen extends Component {
                         <View style={{ width: 170 }}>
                             <Button
                                 title='สมัครสมาชิค'
-                                type='outline'
+                                type='solid'
                                 titleStyle={{ color: 'white' }}
                                 buttonStyle={{ backgroundColor: '#E13C3F', }}
                                 onPress={this.handleSubmit}

@@ -48,7 +48,6 @@ class LoginScreen extends Component {
                 <View style={{ backgroundColor: '#E13C3F', paddingTop: 60, paddingLeft: 10, paddingBottom: 50, }}>
                     <Text style={{ fontSize: 40, fontWeight: 'bold', color: 'white' }}>WELCOME TO</Text>
                     <Text style={{ fontSize: 40, fontWeight: 'bold', color: 'white' }}>Palette.</Text>
-                    <Text style={{ fontSize: 17, color: 'white' }}>เชื่อมต่อประสบการณ์ที่ดีให้คุณ</Text>
                 </View>
                 <View style={{ marginTop: 40, padding: 20 }}>
                     <Input
@@ -82,68 +81,39 @@ class LoginScreen extends Component {
                     {errors.general && (<Text style={{ color: 'red' }}>อีเมลหรือรหัสผ่านผิดพลาดกรุณาลองใหม่อีกครั้ง</Text>)}
                 </View>
 
-                <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
-                    <Button
-                        title='เข้าสู่ระบบ'
-                        type='solid'
-                        titleStyle={{ color: 'white' }}
-                        buttonStyle={{ backgroundColor: '#E13C3F', width: 250 }}
-                        onPress={this.handleSubmit}
-                        disabled={loading}
-                    >
-                        {loading && (<ActivityIndicator />)}
-                    </Button>
-                </View>
 
-                <View style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 30 }}>
-                    <Text style={{ color: 'gray' }}>หรือเข้าสู่ระบบด้วย</Text>
-                </View>
+                <View style={styles.buttonContainer}>
 
-                <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                    <View style={{ marginTop: 30 }}>
+                    <View style={{ width: 170 }}>
+
                         <Button
-                            title='เข้าสู่ระบบด้วย Facebook'
+                            title='สมัครสมาชิค'
                             type='outline'
-                            icon={<Ionicons name='logo-facebook' size={30} color='#4064AD' />}
-                            titleStyle={{ color: 'gray', fontSize: 13, marginLeft: 10 }}
-                            buttonStyle={{ borderColor: '#E13C3F', width: 250, height: 35, justifyContent: 'center' }}
+                            titleStyle={{ color: '#E13C3F' }}
+                            buttonStyle={{ borderColor: '#E13C3F' }}
                             onPress={() => this.props.navigation.navigate('SignUp')}
                         />
                     </View>
-                    <View style={{ marginTop: 15 }}>
+                    <View style={{ width: 170 }}>
                         <Button
-                            title='เข้าสู่ระบบด้วย Google'
-                            type='outline'
-                            icon={<Ionicons name='logo-google' size={30} color='#ED501E' />}
-                            titleStyle={{ color: 'gray', fontSize: 13, marginLeft: 10 }}
-                            buttonStyle={{ borderColor: '#E13C3F', width: 250, height: 35, justifyContent: 'center' }}
-                            onPress={() => this.props.navigation.navigate('SignUp')}
-                        />
+                            title='เข้าสู่ระบบ'
+                            type='solid'
+                            titleStyle={{ color: 'white' }}
+                            buttonStyle={{ backgroundColor: '#E13C3F'}}
+                            onPress={this.handleSubmit}
+                            disabled={loading}
+                        >
+                            {loading && (<ActivityIndicator />)}
+                        </Button>
                     </View>
                 </View>
-
-
-                <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 60, flexDirection: 'row' }}>
-                    <Button
-                        title='สมัครสมาชิค'
-                        type='clear'
-                        titleStyle={{ color: 'gray', fontSize: 13 }}
-                        onPress={() => this.props.navigation.navigate('SignUp')}
-                    />
-                    <Button
-                        title='นโยบายคุ้มครอง'
-                        type='clear'
-                        titleStyle={{ color: 'gray', fontSize: 13 }}
-                        onPress={() => this.props.navigation.navigate('SignUp')}
-                    />
-                </View>
-
 
 
             </KeyboardAvoidingView>
         )
     }
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -153,10 +123,12 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flex: 1,
-        flexDirection: 'column',
-        marginTop: 50,
-        alignItems: 'center',
-
+        flexDirection: 'row',
+        marginTop: 30,
+        marginLeft: 20,
+        marginRight: 20,
+        justifyContent: 'space-between',
+        //   backgroundColor: 'black'
     }
 })
 

@@ -113,16 +113,17 @@ class SettingScreen extends Component {
                             value={this.state.location}
                         />
                     </View>
-                    <View style={{marginTop:20}}>
+                    
+                </View>
+                <View style={{marginTop:20, justifyContent:'center',alignItems:'center'}}>
                         <Button
                             title='LOGOUT'
-                            type='solid'
-                            titleStyle={{ color: 'white' }}
-                            buttonStyle={{ backgroundColor: '#E13C3F', width: 250 }}
+                            type='outline' 
+                            titleStyle={{ color: '#E13C3F' }} 
+                            buttonStyle={{ borderColor: '#E13C3F', width: 250  }}
                             onPress={this.handleLogout}
                         />
                     </View>
-                </View>
             </View>
         )
     }
