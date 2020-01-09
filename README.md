@@ -1,5 +1,5 @@
 # PALETTE_APP
-React native
+Expo, React native, Firebase, Redux, Express
 
 
 ## 1: Install packages
