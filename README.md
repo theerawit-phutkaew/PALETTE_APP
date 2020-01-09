@@ -13,3 +13,5 @@ run `npm start` or `expo start`
 ## 3: Open it
 
 go to Expo application and scan qr code
+
+## Preview
